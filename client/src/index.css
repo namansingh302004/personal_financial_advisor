@@ -356,7 +356,73 @@ input, select, textarea {
   max-width: 480px;
   max-height: 90vh;
   overflow-y: auto;
-  animation: slideUp 0.2s ease;
+  transition: opacity 0.2s ease;
+}
+
+/* Driver.js Overrides for minimal dark aesthetic */
+.driver-popover {
+  background-color: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  border: 1px solid var(--color-border-subtle) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-lg) !important;
+  font-family: inherit !important;
+  padding: 16px !important;
+}
+
+.driver-popover-title {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: var(--color-text) !important;
+  margin-bottom: 8px !important;
+}
+
+.driver-popover-description {
+  font-size: 13px !important;
+  color: var(--color-text-muted) !important;
+  line-height: 1.5 !important;
+}
+
+.driver-popover-footer {
+  margin-top: 16px !important;
+}
+
+.driver-popover-progress-text {
+  font-size: 12px !important;
+  color: var(--color-text-muted) !important;
+}
+
+.driver-popover-next-btn, 
+.driver-popover-prev-btn {
+  background-color: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 6px 12px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all var(--transition) !important;
+  text-shadow: none !important;
+}
+
+.driver-popover-next-btn:hover, 
+.driver-popover-prev-btn:hover {
+  background-color: var(--color-surface-dim) !important;
+}
+
+.driver-popover-next-btn {
+  background-color: var(--color-primary) !important;
+  color: #fff !important;
+  border-color: var(--color-primary) !important;
+}
+
+.driver-popover-next-btn:hover {
+  background-color: var(--color-primary-dark) !important;
+}
+
+.driver-popover-arrow {
+  border-color: var(--color-surface) !important;
 }
 
 .modal-header {

@@ -8,6 +8,7 @@ import TransactionTable from '../components/TransactionTable';
 import ActivityChart from '../components/ActivityChart';
 import RecurringPaymentsPanel from '../components/RecurringPaymentsPanel';
 import AddTransactionModal from '../components/AddTransactionModal';
+import OnboardingTour from '../components/OnboardingTour';
 import toast from 'react-hot-toast';
 import './DashboardPage.css';
 
@@ -98,6 +99,7 @@ const DashboardPage = () => {
 
   return (
     <div className="app-layout">
+      <OnboardingTour />
       <Sidebar />
       <main className="main-content">
         <div className="page">
@@ -122,10 +124,12 @@ const DashboardPage = () => {
             </div>
           ) : (
             <>
-              <WalletSummary summary={summary} />
+              <div id="tour-balance">
+                <WalletSummary summary={summary} />
+              </div>
 
               <div className="dashboard-grid" style={{ gridTemplateColumns: '1fr' }}>
-                <div className="dashboard-main">
+                <div id="tour-transactions" className="dashboard-main">
                   <TransactionTable
                     transactions={transactions}
                     onDelete={handleTransactionDelete}
@@ -136,10 +140,10 @@ const DashboardPage = () => {
               </div>
 
               <div className="dashboard-bottom">
-                <div className="dashboard-chart">
+                <div id="tour-chart" className="dashboard-chart">
                   <ActivityChart data={dailyData} />
                 </div>
-                <div className="dashboard-recurring">
+                <div id="tour-recurring" className="dashboard-recurring">
                   <RecurringPaymentsPanel
                     payments={recurringPayments}
                     onAdd={handleRecurringAdd}

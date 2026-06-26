@@ -30,16 +30,17 @@ const Sidebar = () => {
       </div>
 
       <nav className="sidebar-nav">
-        {navItems.map(({ to, label, Icon }) => (
+        {navItems.map((item) => (
           <NavLink
-            key={to}
-            to={to}
+            key={item.to}
+            to={item.to}
+            id={`tour-${item.to.replace('/', '')}`}
             className={({ isActive }) =>
               `sidebar-link ${isActive ? 'sidebar-link--active' : ''}`
             }
           >
-            <Icon size={15} strokeWidth={1.8} />
-            <span>[{label}]</span>
+            <item.Icon size={15} strokeWidth={1.8} />
+            <span>[{item.label}]</span>
           </NavLink>
         ))}
       </nav>
