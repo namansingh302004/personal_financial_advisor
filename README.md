@@ -1,4 +1,4 @@
-# finwise — your money, simplified.
+# <img src="client/public/favicon.svg" width="32" alt="Finwise Icon" /> finwise — your money, simplified.
 
 > An AI-powered personal finance tracking web application. Track income and expenses, set budgets, manage recurring payments, view analytics, and get personalized financial insights powered by Google Gemini.
 
