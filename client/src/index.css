@@ -433,17 +433,10 @@ input, select, textarea {
   transition: opacity 0.6s ease-in-out !important;
 }
 
-/* Custom Line, Dot, & Arrow for Tour */
+/* Custom Line & Dot for Tour */
 .tour-annotation .driver-popover-arrow {
   border: none !important;
   background-color: var(--color-primary) !important;
-}
-
-/* Base styles for arrowhead and dot */
-.tour-annotation .driver-popover-arrow::after,
-.tour-annotation .driver-popover-arrow::before {
-  content: '';
-  position: absolute;
 }
 
 /* Placement: popover is BELOW the element. Arrow points UP. */
@@ -454,17 +447,10 @@ input, select, textarea {
   left: 50% !important;
   transform: translateX(-50%) !important;
 }
-/* Arrowhead at the top pointing UP */
 .tour-annotation.tour-annotation-bottom .driver-popover-arrow::after {
-  top: -1px;
-  left: -4px;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 6px solid var(--color-primary);
-}
-/* Dot at the bottom (popover side) */
-.tour-annotation.tour-annotation-bottom .driver-popover-arrow::before {
-  bottom: -4px;
+  content: '';
+  position: absolute;
+  top: 0;
   left: -3px;
   width: 8px;
   height: 8px;
@@ -480,17 +466,10 @@ input, select, textarea {
   transform: translateX(-50%) !important;
   margin-bottom: -60px !important;
 }
-/* Arrowhead at the bottom pointing DOWN */
 .tour-annotation.tour-annotation-top .driver-popover-arrow::after {
-  bottom: -1px;
-  left: -4px;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 6px solid var(--color-primary);
-}
-/* Dot at the top (popover side) */
-.tour-annotation.tour-annotation-top .driver-popover-arrow::before {
-  top: -4px;
+  content: '';
+  position: absolute;
+  bottom: 0;
   left: -3px;
   width: 8px;
   height: 8px;
@@ -506,17 +485,10 @@ input, select, textarea {
   top: 50% !important;
   transform: translateY(-50%) !important;
 }
-/* Arrowhead at the left pointing LEFT */
 .tour-annotation.tour-annotation-right .driver-popover-arrow::after {
-  left: -1px;
-  top: -4px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-right: 6px solid var(--color-primary);
-}
-/* Dot at the right (popover side) */
-.tour-annotation.tour-annotation-right .driver-popover-arrow::before {
-  right: -4px;
+  content: '';
+  position: absolute;
+  left: 0;
   top: -3px;
   width: 8px;
   height: 8px;
@@ -532,17 +504,10 @@ input, select, textarea {
   top: 50% !important;
   transform: translateY(-50%) !important;
 }
-/* Arrowhead at the right pointing RIGHT */
 .tour-annotation.tour-annotation-left .driver-popover-arrow::after {
-  right: -1px;
-  top: -4px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 6px solid var(--color-primary);
-}
-/* Dot at the left (popover side) */
-.tour-annotation.tour-annotation-left .driver-popover-arrow::before {
-  left: -4px;
+  content: '';
+  position: absolute;
+  right: 0;
   top: -3px;
   width: 8px;
   height: 8px;
