@@ -1,0 +1,68 @@
+.insight-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.insight-sparkle {
+  color: var(--color-primary);
+}
+
+.insight-timeframes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.insight-tf-btn {
+  font-size: 11px;
+  font-family: var(--font);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 5px 10px;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-text-muted);
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.insight-tf-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.insight-tf-btn--active {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.insight-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 32px 0;
+}
+
+.insight-content p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  white-space: pre-wrap;
+}
+
+.insight-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.insight-empty p {
+  font-size: 13px;
+  line-height: 1.7;
+}

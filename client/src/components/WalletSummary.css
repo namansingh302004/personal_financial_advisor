@@ -1,0 +1,93 @@
+.wallet-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.metric-card {
+  padding: 20px;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.metric-card:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.metric-icon {
+  width: 28px;
+  height: 28px;
+  background: var(--color-surface-low);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+}
+
+.card-income .metric-icon {
+  background: var(--color-income-bg);
+  color: var(--color-income);
+}
+
+.card-expense .metric-icon {
+  background: var(--color-expense-bg);
+  color: var(--color-expense);
+}
+
+.metric-value {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.card-income .metric-value {
+  color: var(--color-income);
+}
+
+.card-expense .metric-value {
+  color: var(--color-expense);
+}
+
+.metric-sub {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+}
+
+.metric-progress {
+  height: 3px;
+  background: var(--color-surface-container);
+  border-radius: 99px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+.metric-progress-bar {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.5s ease;
+}
+
+@media (max-width: 1024px) {
+  .wallet-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .wallet-summary {
+    grid-template-columns: 1fr;
+  }
+}

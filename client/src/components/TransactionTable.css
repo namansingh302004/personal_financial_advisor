@@ -1,0 +1,65 @@
+.transaction-card {
+  padding: 24px;
+}
+
+.tx-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tx-search {
+  position: relative;
+}
+
+.tx-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.tx-search-input {
+  width: 100%;
+  padding: 9px 14px 9px 36px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  font-size: 13px;
+  font-family: var(--font);
+  color: var(--color-text);
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.tx-search-input:focus {
+  border-color: var(--color-primary);
+}
+
+.tx-search-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.tx-filter-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tx-select {
+  flex: 1;
+  min-width: 120px;
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+.tx-note {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+}
