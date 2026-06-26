@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -12,9 +13,12 @@ import InsightsPage from './pages/InsightsPage';
 import DebtsPage from './pages/DebtsPage';
 
 function App() {
+  const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || 'dummy_client_id';
+
   return (
-    <ThemeProvider>
-      <AuthProvider>
+    <GoogleOAuthProvider clientId={googleClientId}>
+      <ThemeProvider>
+        <AuthProvider>
         <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
@@ -65,6 +69,7 @@ function App() {
       </BrowserRouter>
     </AuthProvider>
     </ThemeProvider>
+    </GoogleOAuthProvider>
   );
 }
 

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { GoogleLogin } from '@react-oauth/google';
 import api from '../api/axiosInstance';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
@@ -30,6 +31,17 @@ const LoginPage = () => {
       setError(err.response?.data?.message || 'Login failed. Please try again.');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    try {
+      const { data } = await api.post('/api/auth/google', { token: credentialResponse.credential });
+      login(data);
+      toast.success(`Welcome, ${data.name}!`);
+      navigate('/dashboard');
+    } catch (err) {
+      setError('Google Sign-In failed. Please try again.');
     }
   };
 
@@ -86,6 +98,16 @@ const LoginPage = () => {
             )}
           </button>
         </form>
+        
+        <div style={{ marginTop: '24px', display: 'flex', justifyContent: 'center' }}>
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={() => setError('Google Sign-In failed')}
+            useOneTap
+            shape="rectangular"
+            theme="outline"
+          />
+        </div>
 
         <p className="auth-footer">
           No account?<Link to="/signup"> sign up</Link>
