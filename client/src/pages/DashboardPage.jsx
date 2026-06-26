@@ -5,7 +5,6 @@ import { useAuth } from '../context/AuthContext';
 import Sidebar from '../components/Sidebar';
 import WalletSummary from '../components/WalletSummary';
 import TransactionTable from '../components/TransactionTable';
-import InsightPanel from '../components/InsightPanel';
 import ActivityChart from '../components/ActivityChart';
 import RecurringPaymentsPanel from '../components/RecurringPaymentsPanel';
 import AddTransactionModal from '../components/AddTransactionModal';
@@ -90,6 +89,13 @@ const DashboardPage = () => {
     }
   };
 
+  const handleRecurringPaid = (transaction, updatedPayment) => {
+    setTransactions((prev) => [transaction, ...prev]);
+    setRecurringPayments((prev) => prev.map((p) => (p._id === updatedPayment._id ? updatedPayment : p)));
+    fetchAll(); // Refresh summary + chart
+    api.get('/api/profile').then(({ data }) => updateUser(data)).catch(() => {});
+  };
+
   return (
     <div className="app-layout">
       <Sidebar />
@@ -118,7 +124,7 @@ const DashboardPage = () => {
             <>
               <WalletSummary summary={summary} />
 
-              <div className="dashboard-grid">
+              <div className="dashboard-grid" style={{ gridTemplateColumns: '1fr' }}>
                 <div className="dashboard-main">
                   <TransactionTable
                     transactions={transactions}
@@ -126,9 +132,6 @@ const DashboardPage = () => {
                     filters={filters}
                     onFilterChange={setFilters}
                   />
-                </div>
-                <div className="dashboard-side">
-                  <InsightPanel />
                 </div>
               </div>
 
@@ -142,6 +145,7 @@ const DashboardPage = () => {
                     onAdd={handleRecurringAdd}
                     onDelete={handleRecurringDelete}
                     onToggle={handleRecurringToggle}
+                    onPaid={handleRecurringPaid}
                   />
                 </div>
               </div>

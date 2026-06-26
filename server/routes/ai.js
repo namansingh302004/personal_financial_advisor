@@ -2,7 +2,18 @@ const express = require('express');
 const router = express.Router();
 const protect = require('../middleware/auth');
 const Transaction = require('../models/Transaction');
+const Insight = require('../models/Insight');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
+
+// GET /api/ai/insights
+router.get('/insights', protect, async (req, res) => {
+  try {
+    const insights = await Insight.find({ userId: req.user._id }).sort({ createdAt: -1 });
+    res.json(insights);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error fetching insights history' });
+  }
+});
 
 // POST /api/ai/insights
 router.post('/insights', protect, async (req, res) => {
@@ -87,11 +98,20 @@ ${recentTransactions}
 Provide personalized financial insights, highlight any spending patterns, suggest areas to improve, and give one actionable recommendation for the next month.`;
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
     const result = await model.generateContent(prompt);
-    const insights = result.response.text();
+    const insightsText = result.response.text();
 
-    res.json({ insights, transactionCount: transactions.length, totalIncome, totalExpense });
+    const newInsight = await Insight.create({
+      userId: req.user._id,
+      timeframe,
+      content: insightsText,
+      totalIncome,
+      totalExpense,
+      transactionCount: transactions.length,
+    });
+
+    res.status(201).json(newInsight);
   } catch (err) {
     console.error('AI insights error:', err);
     if (err.message?.includes('API_KEY') || err.message?.includes('apiKey')) {

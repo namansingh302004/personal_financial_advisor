@@ -21,6 +21,7 @@ app.use('/api/analytics', require('./routes/analytics'));
 app.use('/api/ai', require('./routes/ai'));
 app.use('/api/recurring', require('./routes/recurring'));
 app.use('/api/profile', require('./routes/profile'));
+app.use('/api/debts', require('./routes/debts'));
 
 // Health check
 app.get('/', (req, res) => {

@@ -42,6 +42,36 @@
   --sidebar-width: 220px;
 }
 
+/* ─── Dark Theme Tokens ─── */
+[data-theme='dark'] {
+  --color-bg: #121c2a;
+  --color-surface: #1e293b;
+  --color-surface-dim: #334155;
+  --color-surface-low: #1a2536;
+  --color-surface-container: #26354a;
+  --color-border: #334155;
+  --color-border-subtle: #29384d;
+
+  --color-primary: #10b981;
+  --color-primary-dark: #059669;
+  --color-primary-light: #064e3b;
+  --color-primary-on: #000000;
+
+  --color-text: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+
+  --color-income: #10b981;
+  --color-income-bg: rgba(16, 185, 129, 0.15);
+  --color-expense: #fb7185;
+  --color-expense-bg: rgba(251, 113, 133, 0.15);
+
+  --color-error: #fb7185;
+  
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
 /* ─── Reset ─── */
 *, *::before, *::after {
   box-sizing: border-box;

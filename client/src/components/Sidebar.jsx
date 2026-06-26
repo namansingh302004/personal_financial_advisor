@@ -1,16 +1,20 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { LayoutDashboard, BarChart2, User, LogOut } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
+import { LayoutDashboard, BarChart2, User, LogOut, Sparkles, Moon, Sun, Handshake } from 'lucide-react';
 import './Sidebar.css';
 
 const navItems = [
   { to: '/dashboard', label: 'dashboard', Icon: LayoutDashboard },
   { to: '/analytics', label: 'analytics', Icon: BarChart2 },
+  { to: '/insights', label: 'ai insights', Icon: Sparkles },
+  { to: '/debts', label: 'io us', Icon: Handshake },
   { to: '/profile', label: 'profile', Icon: User },
 ];
 
 const Sidebar = () => {
   const { logout, user } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -52,10 +56,15 @@ const Sidebar = () => {
             </div>
           </div>
         )}
-        <button className="sidebar-logout btn btn-ghost btn-sm" onClick={handleLogout}>
-          <LogOut size={13} />
-          logout
-        </button>
+        <div style={{ display: 'flex', gap: '8px', width: '100%' }}>
+          <button className="btn btn-ghost btn-sm" onClick={toggleTheme} style={{ flex: 1, padding: '8px 0', display: 'flex', justifyContent: 'center' }} title="Toggle Theme">
+            {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
+          </button>
+          <button className="sidebar-logout btn btn-ghost btn-sm" onClick={handleLogout} style={{ flex: 3 }}>
+            <LogOut size={13} />
+            logout
+          </button>
+        </div>
       </div>
     </aside>
   );

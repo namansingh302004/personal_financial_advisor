@@ -28,10 +28,15 @@ const recurringPaymentSchema = new mongoose.Schema(
       type: String,
       default: 'Bills & Utilities',
     },
-    frequency: {
+    intervalValue: {
+      type: Number,
+      default: 1,
+      min: [1, 'Interval must be at least 1']
+    },
+    intervalUnit: {
       type: String,
-      enum: ['daily', 'weekly', 'monthly', 'yearly'],
-      default: 'monthly',
+      enum: ['days', 'weeks', 'months', 'years'],
+      default: 'months',
     },
     nextDueDate: {
       type: Date,

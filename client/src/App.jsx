@@ -1,17 +1,21 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import DashboardPage from './pages/DashboardPage';
 import AnalyticsPage from './pages/AnalyticsPage';
 import ProfilePage from './pages/ProfilePage';
+import InsightsPage from './pages/InsightsPage';
+import DebtsPage from './pages/DebtsPage';
 
 function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
+    <ThemeProvider>
+      <AuthProvider>
+        <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="/login" element={<LoginPage />} />
@@ -23,6 +27,14 @@ function App() {
           <Route
             path="/analytics"
             element={<ProtectedRoute><AnalyticsPage /></ProtectedRoute>}
+          />
+          <Route
+            path="/insights"
+            element={<ProtectedRoute><InsightsPage /></ProtectedRoute>}
+          />
+          <Route
+            path="/debts"
+            element={<ProtectedRoute><DebtsPage /></ProtectedRoute>}
           />
           <Route
             path="/profile"
@@ -49,9 +61,10 @@ function App() {
               iconTheme: { primary: '#ba1a1a', secondary: '#fff' },
             },
           }}
-        />
+        </Toaster>
       </BrowserRouter>
     </AuthProvider>
+    </ThemeProvider>
   );
 }
 

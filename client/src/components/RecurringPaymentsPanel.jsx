@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, Calendar, RepeatIcon } from 'lucide-react';
+import { X, Calendar, RepeatIcon, CheckCircle } from 'lucide-react';
 import api from '../api/axiosInstance';
 import toast from 'react-hot-toast';
 
@@ -13,11 +13,12 @@ const defaultForm = {
   amount: '',
   type: 'expense',
   category: 'Bills & Utilities',
-  frequency: 'monthly',
+  intervalValue: 1,
+  intervalUnit: 'months',
   nextDueDate: new Date().toISOString().split('T')[0],
 };
 
-const RecurringPaymentsPanel = ({ payments, onAdd, onDelete, onToggle }) => {
+const RecurringPaymentsPanel = ({ payments, onAdd, onDelete, onToggle, onPaid }) => {
   const [showModal, setShowModal] = useState(false);
   const [form, setForm] = useState(defaultForm);
   const [loading, setLoading] = useState(false);
@@ -43,6 +44,16 @@ const RecurringPaymentsPanel = ({ payments, onAdd, onDelete, onToggle }) => {
       toast.error('Failed to add recurring payment');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handlePay = async (id) => {
+    try {
+      const { data } = await api.post(`/api/recurring/${id}/pay`);
+      toast.success('Payment recorded successfully!');
+      if (onPaid) onPaid(data.transaction, data.payment);
+    } catch {
+      toast.error('Failed to record payment');
     }
   };
 
@@ -79,7 +90,7 @@ const RecurringPaymentsPanel = ({ payments, onAdd, onDelete, onToggle }) => {
                 <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--color-text)' }}>{p.title}</div>
                 <div style={{ fontSize: 11, color: 'var(--color-text-muted)', marginTop: 2 }}>
                   <Calendar size={10} style={{ display: 'inline', marginRight: 4 }} />
-                  due {fmtDate(p.nextDueDate)} · {p.frequency}
+                  due {fmtDate(p.nextDueDate)} · every {p.intervalValue > 1 ? p.intervalValue : ''} {p.intervalUnit}
                   {isDue(p.nextDueDate) && p.active && (
                     <span style={{ marginLeft: 6, color: 'var(--color-expense)', fontWeight: 600 }}>● due soon</span>
                   )}
@@ -96,6 +107,14 @@ const RecurringPaymentsPanel = ({ payments, onAdd, onDelete, onToggle }) => {
                   style={{ fontSize: 10, padding: '4px 8px' }}
                 >
                   {p.active ? 'pause' : 'resume'}
+                </button>
+                <button
+                  className="btn btn-icon btn-ghost"
+                  onClick={() => handlePay(p._id)}
+                  title="Mark as Paid"
+                  style={{ color: 'var(--color-primary)' }}
+                >
+                  <CheckCircle size={14} />
                 </button>
                 <button
                   className="btn btn-icon btn-danger"
@@ -139,14 +158,28 @@ const RecurringPaymentsPanel = ({ payments, onAdd, onDelete, onToggle }) => {
                 </div>
               </div>
               <div style={{ display: 'flex', gap: 12 }}>
-                <div className="form-group" style={{ flex: 1 }}>
-                  <label className="form-label">frequency</label>
-                  <select className="form-select" value={form.frequency} onChange={(e) => change('frequency', e.target.value)}>
-                    <option value="daily">daily</option>
-                    <option value="weekly">weekly</option>
-                    <option value="monthly">monthly</option>
-                    <option value="yearly">yearly</option>
-                  </select>
+                <div className="form-group" style={{ flex: 1.5 }}>
+                  <label className="form-label">repeat every</label>
+                  <div style={{ display: 'flex', gap: '8px' }}>
+                    <input 
+                      type="number" 
+                      className="form-input" 
+                      style={{ width: '60px', padding: '10px' }}
+                      min="1" 
+                      value={form.intervalValue} 
+                      onChange={(e) => change('intervalValue', e.target.value)} 
+                    />
+                    <select 
+                      className="form-select" 
+                      value={form.intervalUnit} 
+                      onChange={(e) => change('intervalUnit', e.target.value)}
+                    >
+                      <option value="days">days</option>
+                      <option value="weeks">weeks</option>
+                      <option value="months">months</option>
+                      <option value="years">years</option>
+                    </select>
+                  </div>
                 </div>
                 <div className="form-group" style={{ flex: 1 }}>
                   <label className="form-label">next due date</label>
