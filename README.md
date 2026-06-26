@@ -4,6 +4,18 @@
 
 ---
 
+## Screenshots
+
+<p align="center">
+  <img src="assets/dashboard_overview.png" width="48%" alt="Dashboard Overview" />
+  <img src="assets/transaction_history.png" width="48%" alt="Transaction History" />
+</p>
+<p align="center">
+  <img src="assets/recurring_payments.png" width="48%" alt="Recurring Payments" />
+  <img src="assets/ai_insights.png" width="48%" alt="AI Insights" />
+</p>
+
+
 ## Tech Stack
 
 | Layer | Technology |
