@@ -61,7 +61,7 @@ function App() {
               iconTheme: { primary: '#ba1a1a', secondary: '#fff' },
             },
           }}
-        </Toaster>
+        />
       </BrowserRouter>
     </AuthProvider>
     </ThemeProvider>
