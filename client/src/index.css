@@ -427,92 +427,14 @@ input, select, textarea {
 
 /* Smoother, slower driver.js animations */
 .driver-popover, .driver-stage {
-  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  transition: all 1.0s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 .driver-overlay {
-  transition: opacity 0.6s ease-in-out !important;
+  transition: opacity 1.0s ease-in-out !important;
 }
 
-/* Custom Line & Dot for Tour */
-.tour-annotation .driver-popover-arrow {
-  border: none !important;
-  background-color: var(--color-primary) !important;
-}
-
-/* Placement: popover is BELOW the element. Arrow points UP. */
-.tour-annotation.tour-annotation-bottom .driver-popover-arrow {
-  width: 2px !important;
-  height: 60px !important;
-  margin-top: -60px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-}
-.tour-annotation.tour-annotation-bottom .driver-popover-arrow::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -3px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-primary);
-}
-
-/* Placement: popover is ABOVE the element. Arrow points DOWN. */
-.tour-annotation.tour-annotation-top .driver-popover-arrow {
-  width: 2px !important;
-  height: 60px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  margin-bottom: -60px !important;
-}
-.tour-annotation.tour-annotation-top .driver-popover-arrow::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: -3px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-primary);
-}
-
-/* Placement: popover is on RIGHT. Arrow points LEFT. */
-.tour-annotation.tour-annotation-right .driver-popover-arrow {
-  height: 2px !important;
-  width: 60px !important;
-  margin-left: -60px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-}
-.tour-annotation.tour-annotation-right .driver-popover-arrow::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: -3px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-primary);
-}
-
-/* Placement: popover is on LEFT. Arrow points RIGHT. */
-.tour-annotation.tour-annotation-left .driver-popover-arrow {
-  height: 2px !important;
-  width: 60px !important;
-  margin-right: -60px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-}
-.tour-annotation.tour-annotation-left .driver-popover-arrow::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: -3px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-primary);
+.driver-popover-arrow {
+  display: none !important;
 }
 
 .modal-header {

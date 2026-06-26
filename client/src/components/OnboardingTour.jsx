@@ -11,8 +11,6 @@ const OnboardingTour = () => {
         showProgress: true,
         animate: true,
         allowClose: false,
-        popoverClass: 'tour-annotation',
-        popoverOffset: 60,
         doneBtnText: '[ get started ]',
         nextBtnText: 'next →',
         prevBtnText: '← prev',
@@ -20,7 +18,6 @@ const OnboardingTour = () => {
           {
             element: '#tour-balance',
             popover: {
-              popoverClass: 'tour-annotation tour-annotation-bottom',
               title: 'Welcome to Finwise!',
               description: 'This is your wallet summary. Here you can see your total balance, monthly income, and expenses at a glance.',
               side: "bottom", align: 'start'
@@ -29,7 +26,6 @@ const OnboardingTour = () => {
           {
             element: '#add-transaction-btn',
             popover: {
-              popoverClass: 'tour-annotation tour-annotation-left',
               title: 'Add Transactions',
               description: 'Click here to log a new expense or income. It will instantly update your balance and charts.',
               side: "left", align: 'start'
@@ -38,7 +34,6 @@ const OnboardingTour = () => {
           {
             element: '#tour-transactions',
             popover: {
-              popoverClass: 'tour-annotation tour-annotation-top',
               title: 'Transaction History',
               description: 'All your recent activity appears here. You can search, filter by category, or delete them if you made a mistake.',
               side: "top", align: 'start'
@@ -47,7 +42,6 @@ const OnboardingTour = () => {
           {
             element: '#tour-recurring',
             popover: {
-              popoverClass: 'tour-annotation tour-annotation-left',
               title: 'Recurring Payments',
               description: 'Keep track of subscriptions and bills. When they are due, just click the checkmark to mark them as paid automatically!',
               side: "left", align: 'start'
@@ -56,7 +50,6 @@ const OnboardingTour = () => {
           {
             element: '#tour-insights',
             popover: {
-              popoverClass: 'tour-annotation tour-annotation-right',
               title: 'AI Financial Insights',
               description: 'Let our AI analyze your spending patterns and give you personalized advice. Try generating an insight once you add some data!',
               side: "right", align: 'start'
@@ -65,7 +58,6 @@ const OnboardingTour = () => {
           {
             element: '#tour-debts',
             popover: {
-              popoverClass: 'tour-annotation tour-annotation-right',
               title: 'Track IOUs',
               description: 'Lent money to a friend? Borrowed for lunch? Keep track of all your debts here and mark them settled when paid.',
               side: "right", align: 'start'
