@@ -122,7 +122,7 @@ RULES:
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({
-      model: 'gemini-3-flash',
+      model: 'gemini-2.5-flash',
       systemInstruction: systemPrompt,
     });
 
@@ -133,10 +133,10 @@ RULES:
     res.json({ reply });
   } catch (err) {
     console.error('Chat error:', err);
-    if (err.message?.includes('API_KEY') || err.message?.includes('apiKey')) {
-      return res.status(500).json({ message: 'Gemini API key not configured.' });
+    if (err.message && err.message.toLowerCase().includes('api key')) {
+      return res.status(500).json({ message: 'Gemini API key not configured.', rawError: err.message });
     }
-    res.status(500).json({ message: 'Failed to get AI response. Please try again.' });
+    res.status(500).json({ message: 'Failed to get AI response.', rawError: err.message });
   }
 });
 

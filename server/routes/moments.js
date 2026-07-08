@@ -118,7 +118,7 @@ router.post('/caption', protect, async (req, res) => {
     const { totalSpent, topCategory, biggestExpense, transactionCount, monthBudget, monthSpent } = req.body;
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: 'gemini-3-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
     const prompt = `Generate a fun, witty, short one-liner caption (max 15 words) for a daily spending summary card. Be playful but not mean. Use emojis.
 

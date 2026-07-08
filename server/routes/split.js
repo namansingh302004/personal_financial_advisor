@@ -16,15 +16,15 @@ router.post('/scan', protect, async (req, res) => {
     let mimeType = 'image/jpeg';
 
     if (image.startsWith('data:')) {
-      const match = image.match(/^data:(image\/\w+);base64,(.+)$/);
-      if (match) {
-        mimeType = match[1];
-        base64Data = match[2];
+      const parts = image.split(',');
+      if (parts.length === 2) {
+        mimeType = parts[0].split(':')[1].split(';')[0];
+        base64Data = parts[1];
       }
     }
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: 'gemini-3-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
     const prompt = `You are a restaurant bill parser. Analyze this bill/receipt image and extract every line item. Return ONLY valid JSON, no markdown, no code fences:
 
@@ -94,10 +94,10 @@ Important:
     });
   } catch (err) {
     console.error('Split scan error:', err);
-    if (err.message?.includes('API_KEY') || err.message?.includes('apiKey')) {
-      return res.status(500).json({ message: 'Gemini API key not configured.' });
+    if (err.message && err.message.toLowerCase().includes('api key')) {
+      return res.status(500).json({ message: 'Gemini API key not configured properly.', rawError: err.message });
     }
-    res.status(500).json({ message: 'Failed to scan bill. Please try again.' });
+    res.status(500).json({ message: 'Failed to scan bill.', rawError: err.message });
   }
 });
 
