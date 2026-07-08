@@ -98,7 +98,7 @@ ${recentTransactions}
 Provide personalized financial insights, highlight any spending patterns, suggest areas to improve, and give one actionable recommendation for the next month.`;
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-3.5-flash' });
     const result = await model.generateContent(prompt);
     const insightsText = result.response.text();
 
