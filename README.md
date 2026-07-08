@@ -1,82 +1,129 @@
-# Finwise — AI Personal Finance Advisor 💸
+# Finwise — AI Personal Finance Advisor
 
-**Live App:** [https://my-finwise.netlify.app](https://my-finwise.netlify.app/)
+**Live Application:** [https://my-finwise.netlify.app](https://my-finwise.netlify.app/)
 
-Finwise is a modern, AI-powered personal finance tracker. Beyond just tracking income and expenses, it uses Google Gemini to parse receipts, analyze your spending habits, generate shareable insights, and detect dark patterns while shopping online.
-
----
-
-## ✨ Features
-
-- **Smart Tracking:** Log income, expenses, and recurring payments.
-- **📸 Receipt Scanner:** Upload a receipt photo; AI extracts the merchant, items, and amount.
-- **✂️ Split the Vibe:** Snap a restaurant bill, assign items to friends, and let AI calculate shares including tax/tip.
-- **💬 AI Chat Assistant:** Talk naturally to your financial data (e.g., *"How much did I spend on food this month?"*).
-- **🏆 Challenges & Streaks:** Gamify your savings with preset challenges and unlockable badges.
-- **🛡️ Dark Pattern Detector:** Paste e-commerce product URLs to detect fake discounts and manipulative pricing.
-- **✨ Money Moments:** Shareable, beautiful daily spending story cards.
+Finwise is a comprehensive, AI-powered personal finance tracking application. It is designed to help users track their income and expenses, set budgets, manage recurring payments, and receive personalized financial insights powered by Google Gemini.
 
 ---
 
-## 🏗️ Architecture & Tech Stack
+## Key Features
 
-Finwise uses a standard **MERN** stack architecture enhanced with AI integrations:
-
-- **Frontend:** React (Vite), React Router, Recharts, Lucide Icons
-- **Backend:** Node.js, Express.js (REST API)
-- **Database:** MongoDB (Mongoose)
-- **AI Integration:** Google Gemini 1.5 Flash (Text & Multimodal Vision)
-- **Hosting:** Frontend on Netlify, Backend on Render, DB on MongoDB Atlas
+- **Authentication:** Secure signup and login functionality utilizing JWT and bcrypt password hashing.
+- **Transaction Tracking:** Add, categorize, and filter transactions by type, date, or search term.
+- **AI Chat Assistant:** A conversational interface that accesses your financial data to answer budgeting and spending questions.
+- **Receipt Scanner:** Upload receipt images to automatically extract merchant names, itemized lists, and total amounts via AI.
+- **Split Bill Calculator:** Scan restaurant bills to assign items to specific individuals and calculate exact shares including tax and tip.
+- **Dark Pattern Detector:** Analyze e-commerce product URLs to detect manipulative pricing or fake discount practices.
+- **Financial Challenges:** Gamified savings challenges with unlockable badges and progress streaks.
+- **Money Moments:** Generate highly visual, shareable daily spending summary cards.
+- **Wallet Summary:** View real-time balances, budget progress, and monthly income versus savings metrics.
+- **Recurring Payments:** Track subscriptions with due-date alerts and pause or resume functionality.
 
 ---
 
-## 🚀 Run Locally
+## Architecture & Technology Stack
 
-### 1. Prerequisites
-- [Node.js](https://nodejs.org/) (v18+)
-- A [MongoDB Atlas](https://www.mongodb.com/atlas) connection URI
-- A [Google Gemini API Key](https://aistudio.google.com/)
+The application is built using the MERN stack and integrates multimodal AI capabilities.
 
-### 2. Clone & Install
+| Layer | Technology |
+|-------|------------|
+| Frontend | React (Vite), React Router, Recharts, Lucide |
+| Styling | Vanilla CSS |
+| Backend | Node.js, Express.js |
+| Database | MongoDB Atlas, Mongoose |
+| AI Integration | Google Gemini 2.5 Flash API (Text & Multimodal) |
+| Deployment | Netlify (Frontend) + Render (Backend) |
+
+---
+
+## Local Development Setup
+
+### Prerequisites
+- Node.js (v18 or higher)
+- MongoDB Atlas account (Free Tier)
+- Google Gemini API Key
+
+### 1. Repository Setup
+
+Clone the repository and enter the project directory:
+
 ```bash
 git clone https://github.com/namansingh302004/personal_financial_advisor.git
 cd personal_financial_advisor
 ```
 
-### 3. Backend Setup
+### 2. Backend Configuration
+
+Install dependencies for the Express backend:
+
 ```bash
 cd server
 npm install
 ```
-Create `server/.env`:
+
+Create a `.env` file in the `server/` directory and configure the following variables:
+
 ```env
 PORT=5000
 MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_super_secret_jwt_key
+JWT_SECRET=your_jwt_secret_key
 GEMINI_API_KEY=your_gemini_api_key
 CLIENT_URL=http://localhost:5173
 ```
-Run the server:
+
+Start the backend development server:
+
 ```bash
 npm run dev
 ```
 
-### 4. Frontend Setup
-Open a new terminal window:
+### 3. Frontend Configuration
+
+Open a new terminal window and install the React dependencies:
+
 ```bash
 cd client
 npm install
 ```
-Create `client/.env`:
+
+Create a `.env` file in the `client/` directory and point it to the local backend:
+
 ```env
 VITE_API_URL=http://localhost:5000
 ```
-Run the client:
+
+Start the frontend development server:
+
 ```bash
 npm run dev
 ```
 
-The app will now be running at **http://localhost:5173**!
+The application will be accessible at **http://localhost:5173**.
 
 ---
-*Built with ❤️ by Naman Singh*
+
+## Project Structure
+
+```text
+personal-financial-advisor/
+├── client/                    # React Vite application
+│   ├── public/
+│   ├── src/
+│   │   ├── api/               # Axios instance configuration
+│   │   ├── components/        # Reusable UI components
+│   │   ├── pages/             # Route-level components
+│   │   └── index.css          # Global design system variables
+│   └── netlify.toml           # Netlify deployment configuration
+├── server/                    # Express REST API
+│   ├── models/                # Mongoose database schemas
+│   ├── middleware/            # JWT authentication logic
+│   ├── routes/                # API endpoints including AI integrations
+│   └── index.js               # Application entry point
+└── README.md
+```
+
+---
+
+## License
+
+Distributed under the MIT License. Built by Naman Singh.
