@@ -1,13 +1,18 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
-import { LayoutDashboard, BarChart2, User, LogOut, Sparkles, Moon, Sun, Handshake } from 'lucide-react';
+import { LayoutDashboard, BarChart2, User, LogOut, Sparkles, Moon, Sun, Handshake, Camera, MessageCircle, Trophy, ShieldAlert, Scissors } from 'lucide-react';
 import './Sidebar.css';
 
 const navItems = [
   { to: '/dashboard', label: 'dashboard', Icon: LayoutDashboard },
   { to: '/analytics', label: 'analytics', Icon: BarChart2 },
   { to: '/insights', label: 'ai insights', Icon: Sparkles },
+  { to: '/chat', label: 'ai chat', Icon: MessageCircle },
+  { to: '/moments', label: 'moments', Icon: Camera },
+  { to: '/challenges', label: 'challenges', Icon: Trophy },
+  { to: '/split', label: 'split bill', Icon: Scissors },
+  { to: '/pricecheck', label: 'price check', Icon: ShieldAlert },
   { to: '/debts', label: 'io us', Icon: Handshake },
   { to: '/profile', label: 'profile', Icon: User },
 ];

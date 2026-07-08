@@ -52,3 +52,48 @@
   accent-color: var(--color-primary);
   cursor: pointer;
 }
+
+/* ─── Receipt Scanner ─── */
+.scan-receipt-section {
+  margin-bottom: 20px;
+}
+
+.scan-receipt-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  border: 1.5px dashed var(--color-border);
+  background: var(--color-surface-low);
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.scan-receipt-btn:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-surface-container);
+}
+
+.scan-receipt-btn.scanning {
+  border-style: solid;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  cursor: wait;
+}
+
+.scan-icon-pulse {
+  animation: scan-pulse 1s ease-in-out infinite;
+}
+
+@keyframes scan-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}

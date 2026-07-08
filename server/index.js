@@ -12,7 +12,7 @@ app.use(cors({
   origin: process.env.CLIENT_URL || 'http://localhost:5173',
   credentials: true,
 }));
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
@@ -22,6 +22,12 @@ app.use('/api/ai', require('./routes/ai'));
 app.use('/api/recurring', require('./routes/recurring'));
 app.use('/api/profile', require('./routes/profile'));
 app.use('/api/debts', require('./routes/debts'));
+app.use('/api/receipt', require('./routes/receipt'));
+app.use('/api/moments', require('./routes/moments'));
+app.use('/api/chat', require('./routes/chat'));
+app.use('/api/challenges', require('./routes/challenges'));
+app.use('/api/pricecheck', require('./routes/pricecheck'));
+app.use('/api/split', require('./routes/split'));
 
 // Health check
 app.get('/', (req, res) => {

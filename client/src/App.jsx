@@ -11,6 +11,11 @@ import AnalyticsPage from './pages/AnalyticsPage';
 import ProfilePage from './pages/ProfilePage';
 import InsightsPage from './pages/InsightsPage';
 import DebtsPage from './pages/DebtsPage';
+import ChatPage from './pages/ChatPage';
+import MomentsPage from './pages/MomentsPage';
+import ChallengesPage from './pages/ChallengesPage';
+import PriceCheckPage from './pages/PriceCheckPage';
+import SplitPage from './pages/SplitPage';
 
 function App() {
   const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || 'dummy_client_id';
@@ -39,6 +44,26 @@ function App() {
           <Route
             path="/debts"
             element={<ProtectedRoute><DebtsPage /></ProtectedRoute>}
+          />
+          <Route
+            path="/chat"
+            element={<ProtectedRoute><ChatPage /></ProtectedRoute>}
+          />
+          <Route
+            path="/moments"
+            element={<ProtectedRoute><MomentsPage /></ProtectedRoute>}
+          />
+          <Route
+            path="/challenges"
+            element={<ProtectedRoute><ChallengesPage /></ProtectedRoute>}
+          />
+          <Route
+            path="/pricecheck"
+            element={<ProtectedRoute><PriceCheckPage /></ProtectedRoute>}
+          />
+          <Route
+            path="/split"
+            element={<ProtectedRoute><SplitPage /></ProtectedRoute>}
           />
           <Route
             path="/profile"

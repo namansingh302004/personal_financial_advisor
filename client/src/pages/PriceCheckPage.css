@@ -1,0 +1,292 @@
+/* ─── Price Check Page ─── */
+
+.pricecheck-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Input Section */
+.pricecheck-input-section {
+  padding: 20px 24px;
+}
+
+.pricecheck-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pricecheck-input-icon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.pricecheck-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 14px;
+  font-family: var(--font);
+  color: var(--color-text);
+  padding: 8px 0;
+}
+
+.pricecheck-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.pricecheck-hint {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin-top: 10px;
+  padding-left: 30px;
+}
+
+/* Loading */
+.pricecheck-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 24px;
+  gap: 16px;
+}
+
+.pricecheck-loading-animation {
+  color: var(--color-primary);
+}
+
+.pricecheck-shield-pulse {
+  animation: shield-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes shield-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+.pricecheck-loading-text {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.pricecheck-loading-steps {
+  display: flex;
+  gap: 24px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.pricecheck-step.active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Verdict Card */
+.pricecheck-verdict {
+  padding: 24px;
+}
+
+.pricecheck-verdict-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.pricecheck-verdict-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 99px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pricecheck-confidence {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  padding: 4px 12px;
+  background: var(--color-surface-container);
+  border-radius: 99px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.pricecheck-product-name {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+/* Prices Grid */
+.pricecheck-prices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.pricecheck-price-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px;
+  background: var(--color-surface-low);
+  border-radius: var(--radius-md);
+}
+
+.pricecheck-price-item.highlight {
+  background: var(--color-income-bg);
+  border: 1px solid var(--color-income);
+}
+
+.pricecheck-price-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.pricecheck-price-value {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.pricecheck-price-value.strikethrough {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+/* Analysis */
+.pricecheck-analysis-text {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+/* Dark Patterns */
+.pricecheck-patterns-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pricecheck-pattern-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  padding: 8px 12px;
+  background: rgba(239, 68, 68, 0.05);
+  border-radius: var(--radius);
+}
+
+.pricecheck-pattern-item svg {
+  color: #ef4444;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Tips */
+.pricecheck-tips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pricecheck-tip-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  padding: 8px 12px;
+  background: rgba(34, 197, 94, 0.05);
+  border-radius: var(--radius);
+}
+
+.pricecheck-tip-item svg {
+  color: #22c55e;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Source */
+.pricecheck-source {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.pricecheck-source-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--color-primary);
+}
+
+.pricecheck-source-link:hover {
+  text-decoration: underline;
+}
+
+/* History */
+.pricecheck-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pricecheck-history-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.pricecheck-history-item:hover {
+  background: var(--color-surface-low);
+}
+
+.pricecheck-history-name {
+  flex: 1;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pricecheck-history-verdict {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .pricecheck-input-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pricecheck-input-icon {
+    display: none;
+  }
+
+  .pricecheck-prices {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pricecheck-hint {
+    padding-left: 0;
+  }
+}

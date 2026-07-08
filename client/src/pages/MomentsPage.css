@@ -1,0 +1,328 @@
+/* ─── Money Moments Page ─── */
+
+.moments-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ─── Story Card ─── */
+.moment-card-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.moment-card {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(6, 78, 59, 0.15), 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.moment-card-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #064e3b 0%, #065f46 30%, #047857 60%, #059669 100%);
+  z-index: 0;
+}
+
+.moment-card-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(52, 211, 153, 0.2) 0%, transparent 40%);
+}
+
+.moment-card-content {
+  position: relative;
+  z-index: 1;
+  padding: 28px 24px;
+  color: #fff;
+}
+
+.moment-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.moment-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.moment-brand-logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.moment-brand-tag {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+.moment-date {
+  font-size: 11px;
+  opacity: 0.7;
+  text-align: right;
+}
+
+.moment-card-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 auto 20px;
+}
+
+/* Stats */
+.moment-card-stats {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.moment-stat {
+  flex: 1;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+.moment-stat-primary {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.moment-stat-income {
+  background: rgba(16, 185, 129, 0.25);
+}
+
+.moment-stat div {
+  display: flex;
+  flex-direction: column;
+}
+
+.moment-stat-value {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.moment-stat-label {
+  font-size: 10px;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.moment-biggest {
+  font-size: 13px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* Budget Bar */
+.moment-budget {
+  margin-bottom: 16px;
+}
+
+.moment-budget-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  opacity: 0.8;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.moment-budget-bar {
+  height: 6px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+}
+
+.moment-budget-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.7);
+  transition: width 1s ease;
+}
+
+.moment-budget-fill.warning {
+  background: #fbbf24;
+}
+
+.moment-budget-fill.danger {
+  background: #fb7185;
+}
+
+/* Caption */
+.moment-caption {
+  text-align: center;
+  padding: 16px 8px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+  min-height: 52px;
+}
+
+.moment-caption-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.spin-slow {
+  animation: spin 2s linear infinite;
+}
+
+.moment-card-footer {
+  text-align: center;
+  font-size: 10px;
+  opacity: 0.4;
+  letter-spacing: 0.06em;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ─── Category Breakdown ─── */
+.moment-cat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.moment-cat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.moment-cat-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.moment-cat-name {
+  color: var(--color-text-secondary);
+}
+
+.moment-cat-amount {
+  font-weight: 600;
+}
+
+.moment-cat-bar {
+  height: 4px;
+  border-radius: 99px;
+  background: var(--color-surface-container);
+  overflow: hidden;
+}
+
+.moment-cat-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--color-primary);
+  transition: width 0.8s ease;
+}
+
+/* ─── Week History ─── */
+.moment-week-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.moment-week-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 8px;
+  border-radius: 10px;
+  background: var(--color-surface-low);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.moment-week-day.today {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.moment-week-day.no-spend:not(.today) {
+  background: var(--color-income-bg);
+}
+
+.moment-week-day-name {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.moment-week-day-amount {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.moment-week-day-count {
+  font-size: 9px;
+  opacity: 0.6;
+}
+
+.moment-week-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  font-size: 14px;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .moment-card {
+    max-width: 100%;
+  }
+
+  .moment-week-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .moment-card-stats {
+    flex-direction: column;
+  }
+}

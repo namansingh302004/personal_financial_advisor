@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { X, Plus } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { X, Plus, Camera, ScanLine } from 'lucide-react';
 import api from '../api/axiosInstance';
 import toast from 'react-hot-toast';
 import './AddTransactionModal.css';
@@ -25,7 +25,40 @@ const defaultForm = {
 const AddTransactionModal = ({ onClose, onAdded }) => {
   const [form, setForm] = useState(defaultForm);
   const [loading, setLoading] = useState(false);
+  const [scanning, setScanning] = useState(false);
   const [error, setError] = useState('');
+  const scanInputRef = useRef(null);
+
+  const handleScanReceipt = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = async (event) => {
+      const base64 = event.target.result;
+      setScanning(true);
+      setError('');
+
+      try {
+        const { data } = await api.post('/api/receipt/scan', { image: base64 });
+        setForm((f) => ({
+          ...f,
+          amount: data.amount ? String(data.amount) : f.amount,
+          category: data.category || f.category,
+          note: data.note || (data.merchant ? `${data.merchant}` : f.note),
+          date: data.date || f.date,
+          type: 'expense',
+        }));
+        toast.success('Receipt scanned! Fields auto-filled.');
+      } catch (err) {
+        toast.error(err.response?.data?.message || 'Failed to scan receipt');
+      } finally {
+        setScanning(false);
+        if (scanInputRef.current) scanInputRef.current.value = '';
+      }
+    };
+    reader.readAsDataURL(file);
+  };
 
   const change = (field, value) => setForm((f) => ({ ...f, [field]: value }));
 
@@ -64,6 +97,36 @@ const AddTransactionModal = ({ onClose, onAdded }) => {
         </div>
 
         <form onSubmit={handleSubmit}>
+          {/* Receipt Scanner */}
+          <div className="scan-receipt-section">
+            <button
+              type="button"
+              className={`scan-receipt-btn ${scanning ? 'scanning' : ''}`}
+              onClick={() => !scanning && scanInputRef.current?.click()}
+              disabled={scanning}
+            >
+              {scanning ? (
+                <>
+                  <ScanLine size={14} className="scan-icon-pulse" />
+                  scanning receipt...
+                </>
+              ) : (
+                <>
+                  <Camera size={14} />
+                  📸 scan receipt
+                </>
+              )}
+            </button>
+            <input
+              ref={scanInputRef}
+              type="file"
+              accept="image/*"
+              capture="environment"
+              onChange={handleScanReceipt}
+              style={{ display: 'none' }}
+            />
+          </div>
+
           {/* Type toggle */}
           <div className="form-group">
             <label className="form-label">type</label>
