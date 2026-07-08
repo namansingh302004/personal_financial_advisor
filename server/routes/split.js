@@ -24,7 +24,7 @@ router.post('/scan', protect, async (req, res) => {
     }
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: 'gemini-3.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
     const prompt = `You are a restaurant bill parser. Analyze this bill/receipt image and extract every line item. Return ONLY valid JSON, no markdown, no code fences:
 
